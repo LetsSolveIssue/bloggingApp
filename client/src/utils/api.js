@@ -1,5 +1,5 @@
 
-const baseURL = 'http://13.127.240.227:9000'
+const baseURL = 'http://13.127.208.242:9000/api/v1'
 
 
 const signInUserURL = `${baseURL}/usersignin`
@@ -13,8 +13,10 @@ const deletePostURL = `${baseURL}/deletePost`
 
 
 const getToken = () => localStorage.getItem('token')
+
+//Fetch api to signin
 const signInUser = user => {
-  console.log(user);
+
     return fetch(signInUserURL, {
       method: 'POST',
       headers: {
@@ -30,6 +32,8 @@ const signInUser = user => {
       .catch(e => console.log(e))
   }
 
+  //fetch api for signup
+
   const createUser = user => {
     return fetch(createUserURL, {
       method: 'POST',
@@ -44,6 +48,8 @@ const signInUser = user => {
     }).then(res => res.json())
   }
 
+
+  //Fetch api to create post
   const createPost = post => {
     const token = getToken()
     return fetch(createPostURL, {
@@ -60,6 +66,7 @@ const signInUser = user => {
   }
 
 
+  //Api to get all post
   const getPosts = () =>{
    return  fetch(postsURl, {
       method: 'GET',
@@ -70,6 +77,7 @@ const signInUser = user => {
 
   }
 
+  //Api to delete post
   const deletePost = id =>
   fetch(`${deletePostURL}/${id}`, {
     method: 'DELETE',

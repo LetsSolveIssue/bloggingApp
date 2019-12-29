@@ -6,7 +6,7 @@ const User = require("../models/user");
 
 
 module.exports = {
-
+//Api for sign in
     signin: async (req, res) => {
 
         try {
@@ -65,6 +65,8 @@ module.exports = {
         }
 
     },
+
+    //Api for signup
     signup: async (req, res) => {
        
         try {
@@ -95,6 +97,8 @@ module.exports = {
 
 
     },
+
+    //middleware use for jwt authentication
     requireSignin: (req, res, next) => {
         let userJwt =  req.headers.authorization.split(' ')[1];
         console.log(userJwt);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { signInUser } from "../../utils/api";
 import HomePageNavbar from "../layout/homepageNavbar";
@@ -60,7 +60,7 @@ export default function OutlinedCard() {
 
 const handleSubmit = (e) =>{
   e.preventDefault()
-  console.log(e);
+ 
   
   signInUser({ userEmail, userPassword }).then(data => {
     if(!data.error){
@@ -78,7 +78,7 @@ const handleSubmit = (e) =>{
   }
   const classes = Login();
   //const bull = <span className={classes.bullet}>•</span>;
-  useEffect(() => console.log(userEmail,userPassword), [userEmail,userPassword]);
+  //useEffect(() => console.log(userEmail,userPassword), [userEmail,userPassword]);
 
   const [values, setValues] = React.useState({
     amount: '',
@@ -104,7 +104,7 @@ const handleSubmit = (e) =>{
     <>
     <Grid item xs={12}>
           <Paper className={classes.paper}><HomePageNavbar /></Paper>
-        </Grid>
+    </Grid>
     
     <Grid
   container
@@ -116,7 +116,7 @@ const handleSubmit = (e) =>{
     <Card className={classes.card} variant="outlined">
     
       <CardContent>
-      <form className="form" onSubmit={e => handleSubmit(e)}  className={clsx(classes.margin, classes.withoutLabel, classes.textField)} Validate autoComplete="off" >
+      <form className="form" onSubmit={e => handleSubmit(e)}  className={clsx(classes.margin, classes.withoutLabel, classes.textField)}  autoComplete="off" >
       <h2 style={{textAlign:'center'}}>Login</h2>
       <TextField
           id="outlined-textarea"
@@ -166,85 +166,6 @@ const handleSubmit = (e) =>{
     </>
   );
 }
-
-
-
-
-
-
-
-
-// const Login = () => {
-//   const [userEmail, setUserEmail] = useState("");
-//   const [userPassword, setUserPassword] = useState("");
-//   const history = useHistory();
-
-
-// const handleSubmit = (e) =>{
-//   e.preventDefault()
-  
-//   signInUser({ userEmail, userPassword }).then(data => {
-//     console.log(data);
-    
-  
-//      history.push('/posts')
-  
-//   })
-//   }
-//  return (
-//    <>
-//    <HomePageNavbar />
-//    <div className="row">
-//       <div className="col s12 m6">
-//         <div className="col-md-6 offset-md-3">
-//           <div className="card card-outline-secondary">
-//             <div className="card-header">
-//               <h3 className="mb-0">Login</h3>
-//             </div>
-//             <div className="card-body">
-//               <form className="form" onSubmit={e => handleSubmit(e)}>
-//                 <div className="form-group">
-//                   <input
-//                     type="text"
-//                     placeholder="Email"
-//                     value={userEmail}
-//                     onChange={e => setUserEmail(e.target.value)}
-//                     className="form-control"
-                  
-//                     required=""
-//                   />
-//                 </div>
-//                 <div className="form-group">
-//                   <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={userPassword}
-//                     onChange={e => setUserPassword(e.target.value)}
-//                     className="form-control"
-//                     required=""
-                  
-//                   />
-//                 </div>
-
-//                 <button
-//                   type="submit"
-//                   className="btn btn-success btn-lg float-right"
-//                 >
-//                   Login
-//                 </button>
-//               </form>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-   
-//    </>
-   
-//   );
-// };
-
-//export default Login;
 
 
 

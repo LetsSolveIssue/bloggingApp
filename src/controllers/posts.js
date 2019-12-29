@@ -3,6 +3,8 @@ const async = require('async');
 const Post = require('../models/posts');
 
 module.exports = {
+
+    //api for creation of post
     createPost : async (req, res) => {
         
        try{
@@ -28,6 +30,9 @@ module.exports = {
        }
         
     },
+
+    //api to get all post
+
     getAllPosts : async (req, res) => {
       try{
           let posts = await Post.find({});
@@ -50,6 +55,7 @@ module.exports = {
           })
       }
     },
+    //api to get post with the id
     getPostById : async (req,res) => {
         try{
             let post =  await Post.findById({ _id : req.params.postId});
@@ -73,6 +79,7 @@ module.exports = {
 
         }
     },
+    //api to delte the post
     deletePost: async (req, res) => {
         let postId = req.params.postId;
         let userId = req.user._id;
